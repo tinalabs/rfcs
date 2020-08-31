@@ -21,8 +21,7 @@
   - List the challenges that are likely to faced in implementing this RFC, such as co-ordinating with third parties, dealing with breaking changes, etc.
   - List the rabbit holes, or complicated parts, that could make the implementation of this RFC go off the rails or take too long
 -->
-- We don't know what we don't know. We may learn this is not as useful as expected, or not possible without some non-ideal compromise.
-- This could take a while; it shouldn't be prioritized over other features that will allow us to launch spike 2 sooner.
+- 
 
 ## Appetite
 <!--
