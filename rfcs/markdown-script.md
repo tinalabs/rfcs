@@ -67,7 +67,8 @@ However, MDX is locked into JSX, and even more specifically, React. It also have
 `markdown-script` would eliminate these constraints by:
 
 - Using remark to generate an AST of a markdown-script document (`.mds` file, generally) using `remark`.
-  - It would enable these new tokens by allowing the user to register them via a `remark` plugin, as well as allow us to provide sensible defaults
+  - It would then use a browser-compliant JS parser to extract the imports and register them as tokens for the markdown AST.
+  - It would also enable new tokens by allowing the user to register them via a `remark` plugin, as well as allow us to provide sensible defaults via the above.
 - This superset of the markdown AST could then be passed to a template function, that knows how to take that AST, and transform it to another format, like HTML or JSX
   - This template function would also take a second argument, an object of data, to allow you to render the same document with different inputs by assigning the data to `this`
 - This superset would support Javascript, to enable inheritance and composition of `mds` documents, through:
