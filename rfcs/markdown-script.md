@@ -56,7 +56,7 @@ Going further, I propose we _write_ this markdown superset, using well-known tec
   
 Within this markdown superset, we add support to prosemirror to:
 
-- Define a set of well-known "widgets" that are rendered inside the WYSIWYM similar to the [Inline Group interface](https://tinacms.org/docs/ui/inline-editing/inline-group/), rendering the UI component using it's native technology, but editing its source via the markdown AST.
+- Define a set of well-known "widgets" that are rendered inside the WYSIWYM similar to the [Inline Group interface](https://tinacms.org/docs/ui/inline-editing/inline-group/), rendering the UI component using it's native technology, but editing its source via the markdown AST and the Inline Group-like UI.
 
 ### How would this work?
 
