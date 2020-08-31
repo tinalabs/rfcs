@@ -1,0 +1,4 @@
+contact_links:
+  - name: Submit an RFC (Request for change)
+    url: https://github.com/tinalabs/rfcs/blob/main/_example.md
+    about: If you'd like to submit an RFC for a change to an existing package, or to suggest a new feature, package, or experiment, please submit a pull request using the template linked to here.
