@@ -26,19 +26,6 @@ I'm proposing we look at it differently -- look at it just like any other type o
 
 Instead of turning markdown into JSX, lets turn the JSX parts of markdown into markdown tokens, and then use to add support to features of Tina like the WYSIWYM.
 
-### Why is this valuable?
-
-Right now, MDX is taking the market by storm, because it is a `human-readable` superset of markdown that allows extension of the markdown syntax via JSX components and syntax.
-
-This allows users to easily write markdown that has rich user interfaces that markdown doesn't natively support, and ensures that the source is human-editable and portable without an large GUI (graphical user interface) on top of it being necessary to maintain it.
-
-This is a huge advantage for both markdown and MDX, over solutions like the InlineBlocks schema or [portabletext](https://github.com/portabletext/portabletext), because these formats are not human-readable and require abstractions to allow non-technical editors to manipulate it. 
-This dependency on GUI abstraction means for non-technical users, these formats are not portable.
-
-I'd like us to pioneer an MDX-like markdown superset that is much more extensible, allowing it to be output to more than just JSX, to truly embrace the portability of markdown but the versatility of structured data.
-
-In short, for long-term prose, markdown is the best option over all other solutions at this time, due to it's simplicity and human-readability.
-
 ### Deep dive
 
 Prosemirror, the technology that powers the Tina WYSIWYM, is a rich-text editor that converts input sources into an editor AST (abstract syntax tree) that it then applies transactions to.
@@ -121,7 +108,24 @@ Due to this being a parser with many renderers (aka remark plugins), we can writ
 <!--
   Please outline the value the work from this RFC would deliver to the users of TinaCMS.
 -->
-We get MDX support, but we also lay the foundation for supporting custom elements, vue.js, svetle, etc directly in the WYSIWYM.
+Right now, MDX is taking the market by storm, because it is a `human-readable` superset of markdown that allows extension of the markdown syntax via JSX components and syntax.
+
+This allows users to easily write markdown that has rich user interfaces that markdown doesn't natively support, and ensures that the source is human-editable and portable without an large GUI (graphical user interface) on top of it being necessary to maintain it.
+
+This is a huge advantage for both markdown and MDX, over solutions like the InlineBlocks schema or [portabletext](https://github.com/portabletext/portabletext), because these formats are not human-readable and require abstractions to allow non-technical editors to manipulate it. 
+This dependency on GUI abstraction means for non-technical users, these formats are not portable.
+
+I'd like us to pioneer an MDX-like markdown superset that is much more extensible, allowing it to be output to more than just JSX, to truly embrace the portability of markdown but the versatility of structured data.
+
+In short, for long-term prose, markdown is the best option over all other solutions at this time, due to it's simplicity and human-readability. With this, we get MDX support, but we also lay the foundation for supporting custom elements, vue.js, svetle, etc directly in the WYSIWYM.
+
+### Extra Context
+
+- [`mdx/runtime` is 1.5MB uncompressed, 350kb gzipped](https://bundlephobia.com/result?p=@mdx-js/runtime@1.6.16)
+- [`acorn-loose` is 120kb uncompressed, 35kb gzipped](https://bundlephobia.com/result?p=acorn-loose@8.0.0)
+- [`remark` is 68kb uncompressed, 24kb gzipped)(https://bundlephobia.com/result?p=remark@12.0.1)
+
+I believe we can make this happen with only remark and acorn-loose, which means we have 1300kb of our own code + AST to work with to make this work before it's equivalent to MDX in the browser, and it opens the door to supporting a lot more than just MDX with that 1300kb.
 
 ## Risks & Rabbit Holes
 <!--
