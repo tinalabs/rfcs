@@ -63,6 +63,10 @@ export const HeroBlock = {
 
 This won't work because author does not line up with the hero block's prop contract.
 
+### A Example Solution
+
+I believe the solution is by allowing editors to intuitively map a content model to the data structure of the block's props as the editor is building the reference:
+
 ```
 import { join, firstLetter, resolveReferences } from "tinacms-reference";
 
