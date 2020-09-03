@@ -33,7 +33,35 @@ To help get us closer to this answer, let's discuss won't wont work:
   - The component or UI using the data doesn't adhere to the same interface, e.g, if it's existing or legacy code that can't be refactored for operational reasons?
   - The data structure of the record changes, making the component that _did_ adhere to the data structure fall out of compliance?
   
-Let's get more concrete:
+Let's get more concrete. Imagine you had a design system with 50+ atomic elements (buttons, selects, text inputs, cards, etc). And above that, you already had your most common page building patterns in components (heros, call to actions, etc).
+
+To use these with the current discussed approach to referential integrity, the components would have to adhere to the model of an entity/content model. For example, this wouldn't work:
+
+```
+type Author {
+  id: number;
+  firstName: string;
+  lastName: string;
+}
+
+export const HeroBlock = {
+  component: ({data, index}) => (
+    <BlocksControls className="hero-block" index={index}>
+      <h1>{data.title}</h1>
+    </BlocksControls>
+  ),
+  template: {
+    id: "hero-block",
+    name: "Hero Block",
+    fields: [],
+    initialValues: {
+      title: "Enter a nice title"
+    }
+  }
+}
+```
+
+This won't work because author does not line up with the hero block's prop contract.
 
 ```
 import { join, firstLetter, resolveReferences } from "tinacms-reference";
