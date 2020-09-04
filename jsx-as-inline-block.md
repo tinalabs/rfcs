@@ -114,6 +114,7 @@ It also greatly increases portability, as the react code can be picked up and re
 -->
 - Ensuring the react code is portable needs a lot of test cases
 - Don't re-invent inline blocks, make this an abstraction on top of it, either by adding a `format` field or creating a new field using the same logic if that becomes problematic.
+- The logic for mapping inline blocks data to each block should be abstracted out to an exportable helper so that it can be embedded in the generated react code, instead of being field magic
 
 ## Appetite
 <!--
