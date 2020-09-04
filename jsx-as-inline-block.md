@@ -3,7 +3,18 @@
   Provide a brief summary of what this RFC is about.
 -->
 
-Currently inline blocks creates a JSON data structure. However, blocks is _not_ evergreen content, and does not need this level of indirection. What if react apps using inline blocks stored the blocks structure as react?
+Currently inline blocks creates a JSON data structure. However, blocks is _not_ evergreen content, and does not need this level of indirection. 
+
+Also, currently `mdx` is used to provide the same functionality of inline blocks, by embedding react components inside of markdown.
+
+However, MDX is the _wrong_ inversion of control. MDX couples your evergreen markdown content with domain-specific react components. That markdown content isn't portable, you can't take it elsewhere, making the entire value prop of markdown a lot less valuable:
+
+- Markdown is portable
+- Markdown is universally approachable
+
+What if react apps using inline blocks stored the blocks structure as react?
+
+This means that markdown could be stored in a `RichTextBlock`, while more complicated content could be stored as React Components with structured data.
 
 ## Scope
 <!--
@@ -91,6 +102,36 @@ Which using `acorn`, we could then translate to valid JSX before writing to a `.
 export default () => (
   <ExampleBlock />
   <CoolBlock />
+)
+```
+
+### Advanced Use Case
+
+The above use case is simple, but it _does lead to a similar coupling as MDX_.
+
+This is why I propose an advanced form of this would end up outputting both JSON _and_ a React component, if the development team implementing wanted to separate the data from the UI implementation:
+
+`block-layout.json`
+```
+[
+  {
+    _template: "ExampleBlock"
+    foo: "bar"
+  },
+  {
+    _template: "CoolBlock",
+    bar: "foo"
+  }
+]
+```
+
+`block-layout.jsx`
+```
+import data from "./blocks-layout.json";
+
+export default () => (
+  <ExampleBlock foo={data[0].foo} />
+  <CoolBlock bar={data[1].bar} />
 )
 ```
 
