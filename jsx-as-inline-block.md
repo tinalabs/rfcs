@@ -15,11 +15,10 @@ Inline Blocks is stored as very simple data structure for representing presentat
 ```
 type AllowedBlocks = "hero"
 
-type BlockSchema 
-{
+type BlockSchema {
   _template: AllowedBlocks
-} &
-{
+} 
+& {
   [key: string]: unknown
 }
 ```
@@ -27,14 +26,15 @@ type BlockSchema
 So, let's ask ourselves, what _is_ a react component? It's an XML-like syntax tree for representing presentational content, that is converted to Javascript functions to be executed in the browser.
 
 ```
-type ReactComponent
-{
+type ReactComponent {
   name: string;
   props: ReactComponentProps
 }
 
-type ReactComponentProps
-{
+type ReactComponentProps {
+  children: React.ReactChild
+}
+& {
   [key: string]: unknown
 }
 ```
