@@ -35,18 +35,3 @@ https://code.visualstudio.com/api/language-extensions/language-server-extension-
 
 The GraphiQL project is (for some reason) in charge of the GraphQL LSP, it seems mostly like it's oriented towards intellisense for `.gql` files, but I'm proposing that we use it for our content files themselves (like `content/posts/hello-world.md`) [https://github.com/graphql/graphiql](https://github.com/graphql/graphiql)
 
-## Relational Intellisense
-
-![https://s3-us-west-2.amazonaws.com/secure.notion-static.com/a302d619-5529-4ca8-ac75-54e0bf6b5ee6/Screen_Shot_2020-09-10_at_8.55.42_PM.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/a302d619-5529-4ca8-ac75-54e0bf6b5ee6/Screen_Shot_2020-09-10_at_8.55.42_PM.png)
-
-1. The standard YML schema validator only knows that this is string, but we know that this a file reference so we can validate it.
-
-![https://s3-us-west-2.amazonaws.com/secure.notion-static.com/0a93ad82-fa73-4851-8600-9a8e9d3a0d84/Screen_Shot_2020-09-10_at_8.55.31_PM.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/0a93ad82-fa73-4851-8600-9a8e9d3a0d84/Screen_Shot_2020-09-10_at_8.55.31_PM.png)
-
- 2.  Again, normal JSON schema intellisense doesn't know that this is a file, but we know this is a content relationship
-
-## Content validations
-
-When you're designing your content model you'll inevitably want to link fields to other content models, this is one of the primary functions of CMSs and it can be displayed in `.yml` files like this: 
-
-![https://s3-us-west-2.amazonaws.com/secure.notion-static.com/a76d9704-b9b1-439a-8feb-6cceae78f0c2/Screen_Shot_2020-09-11_at_10.05.53_AM.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/a76d9704-b9b1-439a-8feb-6cceae78f0c2/Screen_Shot_2020-09-11_at_10.05.53_AM.png)
